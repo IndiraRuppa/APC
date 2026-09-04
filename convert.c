@@ -60,3 +60,35 @@ int string_to_list(char *str,Dlist **head , Dlist **tail)
     }
     return 1;
 }
+int compare_list(Dlist *head1,Dlist *head2)
+{
+    int len1=0, len2=0;
+    // Count length of List 1
+    for(Dlist *t=head1;t!=NULL;t=t->next)
+    {
+        len1++;
+    } 
+    // Count length of List 2
+    for(Dlist *t=head2;t!=NULL;t=t->next)
+    {
+        len2++;
+    }
+    // Compare lengths first
+    if(len1>len2)
+    return 1;
+    if(len1<len2)
+    return -1;
+// Lengths are equal: compare digits
+while(head1!=NULL && head2!=NULL)
+{
+    if(head1->data > head2->data)
+    return 1;
+    if(head1->data < head2->data)
+    return -1;
+// Advance pointers to prevent infinite loop
+head1 = head1->next;
+head2 = head2->next;
+}
+// Both numbers are equal
+return  0;
+}

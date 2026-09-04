@@ -21,6 +21,7 @@ int  string_to_list(char *str,Dlist **head,Dlist **tail);
 
 int insert_at_first(Dlist **head,Dlist **tail,unsigned char data);
 int insert_at_last(Dlist **head,Dlist **tail,unsigned char data);
+int compare_list(Dlist *head,Dlist *tail);
 void print_list(Dlist *head);
 void free_list(Dlist **head);
 
