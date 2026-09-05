@@ -1,8 +1,13 @@
+#ifndef VALIDATION_H
+#define VALIDATION_H
 #include "apc.h"
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 int validate_args(int argc, char *argv[])
 {
     // Check argument count
-    if(argc != 4)
+    if(argc <4)
     {
         printf("Eroor: argument count is invalid\n");
         return   FAILURE;
@@ -26,7 +31,7 @@ int validate_args(int argc, char *argv[])
     }
 
     // Validate Operand 2
-    for(int i=0;argv[3][i]!="\0";i++)
+    for(int i=0;argv[3][i]!='\0';i++)
     {
         if (argv[3][i] < '0' || argv[3][i] > '9')
         {
@@ -36,3 +41,4 @@ int validate_args(int argc, char *argv[])
     }
   return SUCCESS;
 }
+#endif

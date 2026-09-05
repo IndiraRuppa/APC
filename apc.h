@@ -16,9 +16,8 @@ typedef struct node
  struct node *next;    //Pointer to the next node
 }Dlist;  
 
-int validate_args(int argc, char *argv[]);
-int  string_to_list(char *str,Dlist **head,Dlist **tail);
 
+int  string_to_list(char *str,Dlist **head,Dlist **tail);
 int insert_at_first(Dlist **head,Dlist **tail,unsigned char data);
 int insert_at_last(Dlist **head,Dlist **tail,unsigned char data);
 int compare_list(Dlist *head,Dlist *tail);
@@ -27,8 +26,8 @@ void free_list(Dlist **head);
 
 
 int Add(Dlist *head1,Dlist *tail,Dlist *head2, Dlist *tail2,Dlist **res_head,Dlist **res_tail);
-int sub(Dlist *head1,Dlist *tail,Dlist *head2, Dlist *tail2,Dlist **res_head,Dlist **res_tail);
-int mul(Dlist *head1,Dlist *tail,Dlist *head2, Dlist *tail2,Dlist **res_head,Dlist **res_tail);
+int Sub(Dlist *head1,Dlist *tail,Dlist *head2, Dlist *tail2,Dlist **res_head,Dlist **res_tail);
+int Mul(Dlist *head1,Dlist *tail,Dlist *head2, Dlist *tail2,Dlist **res_head,Dlist **res_tail);
 int Div(Dlist *head1,Dlist *tail,Dlist *head2, Dlist *tail2,Dlist **res_head,Dlist **res_tail);
 
 #endif
