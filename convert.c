@@ -85,13 +85,12 @@ int string_to_list(char *str, Dlist **head, Dlist **tail)
 
     return SUCCESS;
 }
-
 int compare_list(Dlist *head1, Dlist *head2)
 {
     int len1 = 0, len2 = 0;
     for (Dlist *t = head1; t != NULL; t = t->next)
     {
-        len1++;
+        len1++;   
     }
     for (Dlist *t = head2; t != NULL; t = t->next)
     {

@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 int main(int argc,char *argv[])
 {
     //Validate input arguments
@@ -67,7 +65,7 @@ int main(int argc,char *argv[])
         case '/':
         if (Div(head1, tail1, head2, tail2, &res_head, &res_tail)==FAILURE)
         {
-            
+            printf("Error during Division.\n");
             free_list(&head1);
             free_list(&head2);
             return FAILURE;
