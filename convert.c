@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "apc.h"
 
 int insert_at_last(Dlist **head, Dlist **tail, unsigned char data)
@@ -62,15 +63,20 @@ int string_to_list(char *str, Dlist **head, Dlist **tail)
     }
 
     // Ensure list pointers are clean
-    *head = NULL;
-    *tail = NULL;
+    //*head = NULL;
+    //*tail = NULL;
 
     int i = 0;
+    if (str[i] == '+' || str[i] == '-')
+    {
+        i++;
+    }
     while (str[i] != '\0')
     {
         // Reject non-numeric characters
         if (str[i] < '0' || str[i] > '9')
         {
+            free_list(head);
             return FAILURE;
         }
 
@@ -80,6 +86,7 @@ int string_to_list(char *str, Dlist **head, Dlist **tail)
             free_list(head);
             return FAILURE;
         }
+       
         i++;
     }
 
