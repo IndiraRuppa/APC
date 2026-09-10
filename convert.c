@@ -62,18 +62,14 @@ int string_to_list(char *str, Dlist **head, Dlist **tail)
         return FAILURE;
     }
 
-    // Ensure list pointers are clean
-    //*head = NULL;
-    //*tail = NULL;
-
     int i = 0;
     if (str[i] == '+' || str[i] == '-')
     {
         i++;
     }
+
     while (str[i] != '\0')
     {
-        // Reject non-numeric characters
         if (str[i] < '0' || str[i] > '9')
         {
             free_list(head);
@@ -86,18 +82,29 @@ int string_to_list(char *str, Dlist **head, Dlist **tail)
             free_list(head);
             return FAILURE;
         }
-       
+
         i++;
     }
 
     return SUCCESS;
 }
+
 int compare_list(Dlist *head1, Dlist *head2)
 {
+    // Skip leading zero nodes before comparing magnitude
+    while (head1 != NULL && head1->data == 0 && head1->next != NULL)
+    {
+        head1 = head1->next;
+    }
+    while (head2 != NULL && head2->data == 0 && head2->next != NULL)
+    {
+        head2 = head2->next;
+    }
+
     int len1 = 0, len2 = 0;
     for (Dlist *t = head1; t != NULL; t = t->next)
     {
-        len1++;   
+        len1++;
     }
     for (Dlist *t = head2; t != NULL; t = t->next)
     {

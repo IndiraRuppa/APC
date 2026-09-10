@@ -76,15 +76,7 @@ int validate_args(int argc, char *argv[])
         return FAILURE;
     }
 
-    return SUCCESS;
 
-    // Validate Operator
-// Correct:
-if (strlen(argv[2]) != 1 || strchr("+-x/", argv[2][0]) == NULL)
-    {
-        printf("Invalid operators:Allow only +,-,x,/ \n");
-        return FAILURE;
-    }
 
     // Validate Operand 1
    
