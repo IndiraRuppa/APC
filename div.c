@@ -17,14 +17,14 @@ int Div(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
     // Traverse through dividend list head1 digit by digit
     while (curr != NULL)
     {
-        // 1. Append current digit to temp list
+        // 1. store current digit to temp list
         if (insert_at_last(&temp_head, &temp_tail, curr->data) == FAILURE)
         {
             free_list(&temp_head);
             return FAILURE;
         }
 
-        // 2. Remove leading zeros safely from temp_head
+        // 2. Remove leading zeros 
         while (temp_head != NULL && temp_head->data == 0 && temp_head->next != NULL)
         {
             Dlist *del = temp_head;
@@ -33,7 +33,7 @@ int Div(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
             free(del);
         }
 
-        // Properly update temp_tail to avoid dangling pointer issues
+        // Properly update temp_tail 
         if (temp_head == NULL)
         {
             temp_tail = NULL;
@@ -49,12 +49,12 @@ int Div(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
 
         int count = 0;
 
-        // 3. Repeated subtraction while temp_head >= head2
+        // 3. Repeated subtraction 
         while (temp_head != NULL && compare_list(temp_head, head2) >= 0)
         {
             Dlist *rem_head = NULL, *rem_tail = NULL;
 
-            // Perform subtraction: temp_head - head2
+            // subtraction: temp_head - head2
             if (Sub(temp_head, temp_tail, head2, tail2, &rem_head, &rem_tail) == FAILURE)
             {
                 free_list(&temp_head);
@@ -69,7 +69,7 @@ int Div(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
             count++;
         }
 
-        // 4. Append subtraction count digit to result list (skip leading zeros in quotient)
+        // 4. Append subtraction count digit to result 
         if (*res_head != NULL || count > 0)
         {
             if (insert_at_last(res_head, res_tail, (unsigned char)count) == FAILURE)
@@ -84,7 +84,7 @@ int Div(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
 
     free_list(&temp_head);
 
-    // 5. If result list is empty, quotient is 0
+    // 5. If result list is empty
     if (*res_head == NULL)
     {
         if (insert_at_last(res_head, res_tail, 0) == FAILURE)

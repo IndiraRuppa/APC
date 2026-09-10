@@ -4,7 +4,7 @@
 
 int Mul(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head, Dlist **res_tail)
 {
-    // Handle multiplication by zero[cite: 5]
+    //  multiplication by zero
     if ((head1->data == 0 && head1->next == NULL) || (head2->data == 0 && head2->next == NULL))
     {
         return insert_at_first(res_head, res_tail, 0);
@@ -19,7 +19,7 @@ int Mul(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
         Dlist *r1_head = NULL, *r1_tail = NULL; 
         int carry = 0;
 
-        // 1. MUST use insert_at_last to append trailing zeros at LSB (tail)[cite: 4, 5]
+        //  insert_at_last to append trailing zeros at LSB (tail)
         for (int i = 0; i < zero; i++)
         {
             if (insert_at_last(&r1_head, &r1_tail, 0) == FAILURE)
@@ -30,7 +30,7 @@ int Mul(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
             }
         }
 
-        // 2. Multiply tail1 digits with temp2->data[cite: 5]
+        // 2. Multiply tail1 digits with temp2->data
         Dlist *temp1 = tail1;
         while (temp1 != NULL)
         {
@@ -38,7 +38,7 @@ int Mul(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
             unsigned char digit = prod % 10;
             carry = prod / 10;
 
-            // Prepend product digits at MSB (head)[cite: 4, 5]
+            // product digits at MSB (head)
             if (insert_at_first(&r1_head, &r1_tail, digit) == FAILURE)
             {
                 free_list(&r1_head);
@@ -49,7 +49,7 @@ int Mul(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
             temp1 = temp1->prev;
         }
 
-        // 3. Prepend remaining carry at MSB (head)[cite: 5]
+        // 3. remaining carry at MSB (head)
         if (carry > 0)
         {
             if (insert_at_first(&r1_head, &r1_tail, (unsigned char)carry) == FAILURE)
@@ -60,7 +60,7 @@ int Mul(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
             }
         }
 
-        // 4. Add partial product to running total[cite: 5]
+        // 4. Add partial product to running total
         if (R_res_head == NULL)
         {
             R_res_head = r1_head;

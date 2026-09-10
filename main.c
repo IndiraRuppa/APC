@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
             return FAILURE;
     }
 
-    // Step 4: Centralized Error Handling
+    // Step 4:  Error Handling
     if (status == FAILURE)
     {
         printf("Error: Operation '%c' failed during execution.\n", op);
@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
         return FAILURE;
     }
 
-    // Step 5: Centralized Result Printing
+    // Step 5: Result Printing
     printf("Result = ");
     if (is_negative && res_head != NULL && !(res_head->data == 0 && res_head->next == NULL))
     {
@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
     print_list(res_head);
     printf("\n");
 
-    // Step 6: Memory Cleanup
+    // Step 6:free  Memory 
     free_list(&head1);
     free_list(&head2);
     free_list(&res_head);

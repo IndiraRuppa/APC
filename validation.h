@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-// Helper function to check if a string is a valid signed/unsigned integer
+// check if a string is a valid signed/unsigned integer
 static int is_valid_operand(const char *str)
 {
     if (str == NULL || *str == '\0')
@@ -14,19 +14,17 @@ static int is_valid_operand(const char *str)
 
     int i = 0;
 
-    // Skip optional leading sign '+' or '-'
+    // optional leading sign '+' or '-'
     if (str[i] == '+' || str[i] == '-')
     {
         i++;
     }
 
-    // Must have at least one digit after sign
+    // least one digit after sign
     if (str[i] == '\0')
     {
         return 0;
     }
-
-    // Verify all remaining characters are purely digits
     while (str[i] != '\0')
     {
         if (!isdigit((unsigned char)str[i]))
@@ -39,7 +37,7 @@ static int is_valid_operand(const char *str)
     return 1;
 }
 
-// Helper function to check if an operand is zero (e.g., "0", "00", "-0")
+//  check if an operand is zero 
 static int is_operand_zero(const char *str)
 {
     int i = 0;
@@ -69,7 +67,7 @@ int validate_args(int argc, char *argv[])
         return FAILURE;
     }
 
-    // Check operator validity: must be a single character and one of +, -, x, /
+    // Check operator validity: +, -, x, /
     if (strlen(argv[2]) != 1 || strchr("+-x/", argv[2][0]) == NULL)
     {
         printf("Error: Invalid operator. Supported operators: +, -, x, /\n");

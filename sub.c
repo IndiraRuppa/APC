@@ -4,7 +4,7 @@
 
 int Sub(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head, Dlist **res_tail)
 {
-    // Determine which number is larger
+    // number is larger
     int cmp = compare_list(head1, head2);
     int is_negative = 0;
     Dlist *temp1 = NULL;
@@ -33,10 +33,10 @@ int Sub(Dlist *head1, Dlist *tail1, Dlist *head2, Dlist *tail2, Dlist **res_head
         int val1 = temp1->data;
         int val2 = (temp2 != NULL) ? temp2->data : 0; 
 
-        // Apply borrow from the previous digit
+        //  borrow from the previous digit
         val1 = val1 - borrow;
 
-        // Check if we need to borrow for current digit
+        // Check borrow for current digit
         if (val1 < val2)
         {
             val1 += 10;
